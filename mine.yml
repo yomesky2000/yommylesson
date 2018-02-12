@@ -1,5 +1,5 @@
 ---
-- hosts: 10.0.0.42
+- hosts: dev
   tasks:
     - name: just run a test script
       shell: echo "Post patch testing"
