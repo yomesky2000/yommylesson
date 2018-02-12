@@ -2,7 +2,7 @@
 - hosts: 10.0.0.42
   tasks:
     - name: just run a test script
-      script: /etc/ansible/postpatch.sh
+      shell: echo "Post patch testing"
       register: name
 
     - name: debugging
