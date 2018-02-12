@@ -1,6 +1,6 @@
 ---
 - name: This is to set up Apache web server
-  hosts: 10.0.0.44
+  hosts: dev
   tasks:
   - name: Installation of Apache Web Server
     yum: name=httpd
