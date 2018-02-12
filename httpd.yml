@@ -1,0 +1,8 @@
+---
+- name: This is to set up Apache web server
+  hosts: 10.0.0.44
+  tasks:
+  - name: Installation of Apache Web Server
+    yum: name=httpd
+  - name: start the httpd service
+    service: name=httpd state=started

@@ -1,0 +1,21 @@
+---
+- hosts: 10.0.0.42
+  tasks:
+    - name: just run a test script
+      script: /etc/ansible/postpatch.sh
+      register: name
+
+    - name: debugging
+      debug: var=name
+
+    - name: show me std.out
+      debug: msg={{name.stdout}} 
+    - name: show me stderr
+      debug: msg={{name.stderr}}
+    - name: path to myapp
+      stat: path=/home/abbey/myapp
+      register: apptest
+    - name: print out error if this part does not exist
+      debug: var=apptest
+    - name: check to see if it the path does exist if not print out error
+      debug: msg={{apptest.stat.exists == false}}
