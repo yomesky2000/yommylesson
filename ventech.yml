@@ -1,0 +1,29 @@
+---
+- hosts: db
+  vars:
+    remote_user: oracle
+    sudo_user: oracle
+    oracle_base: /u01/app/oracle
+    oracle_home: /u01/app/oracle/oracle/product/12.1.0.2/dbhome
+    become: yes
+  tasks:
+    #- name: login as oracle user to oracle DB
+     # script: /apps/oralogin.sh
+    - name: Run Oracle Database Post Patch Steps
+      script: /apps/postdb.sh
+      register: name
+
+    - name: debugging
+      debug: var=name
+
+    - name: Display standard output
+      debug: msg={{name.stdout}} 
+    - name: show me stderr
+      debug: msg={{name.stderr}}
+    - name: path to myapp
+      stat: path=/home/abbey/myapp
+      register: apptest
+    - name: Display error any post patch steps fails
+      debug: var=apptest
+    - name: check to see if it the path does exist if not print out error
+      debug: msg={{apptest.stat.exists == false}}

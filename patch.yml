@@ -1,0 +1,19 @@
+---
+- hosts: db
+  vars:
+    remote_user: oracle
+    sudo_user: oracle
+    oracle_base: /u01/app/oracle
+    oracle_home: /u01/app/oracle/oracle/product/12.1.0.2/dbhome
+    become: yes
+  tasks:
+    - name: login as oracle user to oracle DB
+      shell: . ${HOME}/.profile-12c
+    - name: export DB Date
+      shell: export DB_DATE=`date '+%m/%d/%y-%H:%M:%S'`
+    - name:  databas homee
+      shell: ORACLE_HOME={{oracle_home}}
+    - name: login to database
+      shell: sudo -iu {{remote_user}} "sqlplus / as sysdba"
+    - name: Prompt check for coampatibility
+      command: SELECT name, value FROM v\$parameter WHERE name = 'compatible';           
