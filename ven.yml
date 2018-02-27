@@ -1,0 +1,21 @@
+---
+- hosts: db
+  vars:
+    remote_user: oracle
+    sudo_user: oracle
+    oracle_base: /u01/app/oracle
+    oracle_home: /u01/app/oracle/oracle/product/12.1.0.2/dbhome
+    become: yes
+  tasks:
+    - name: Run Oracle Database Post Patch Scripts
+      script: /apps/post_022618.sh
+      register: name
+
+    - name: debugging
+      debug: var=name
+
+    - name: Display standard output
+      debug: msg={{name.stdout}}
+    - name: show me stderr
+      debug: msg={{name.stderr}}
+
