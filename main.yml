@@ -2,4 +2,4 @@
 - hosts: suf
   tasks:
     - name: create une users
-      script: /home/oracle/yommylesson/user.sh
+      script: /etc/ansible/yommylesson/user.sh
