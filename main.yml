@@ -1,0 +1,5 @@
+---
+- hosts: suf
+  tasks:
+    - name: create une users
+      script: /home/oracle/yommylesson/user.sh
