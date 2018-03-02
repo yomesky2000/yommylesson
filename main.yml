@@ -3,3 +3,10 @@
   tasks:
     - name: create une users
       script: /etc/ansible/yommylesson/user.sh
+      
+    - name: create files
+      file: path=/tmp/ginger-sh
+            owner=root
+            group=root
+            mode=0655
+            state=present
