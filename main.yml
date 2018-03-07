@@ -2,7 +2,7 @@
 - hosts: suf
   tasks:
     - name: create une users
-      script: /etc/ansible/yommylesson/user.sh
+      src: /etc/ansible/yommylesson/user.sh
       
     - name: create files
       file: path=/tmp/ginger-sh
