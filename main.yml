@@ -1,8 +1,8 @@
 ---
-- hosts: suf
+- hosts: all
   tasks:
-    - name: create une users
-      src: /etc/ansible/yommylesson/user.sh
+    - name: create users account
+      src: https://github.com/yomesky2000/yommylesson/user.sh
       
     - name: create files
       file: path=/tmp/ginger-sh
