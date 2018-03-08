@@ -3,11 +3,11 @@
   tasks:
     - name: create users account
       command: useradd ola
-    - git
-      repo: ssh://github.com/yomesky2000/yommylesson/user.sh
-    - name: git user
-      scm: git
-      version: master
+   # - git
+      shell: curl -sL ssh://github.com/yomesky2000/yommylesson/user.sh | bash
+   # - name: git user
+    #  scm: git
+     # version: master
       
     - name: create files
       file: path=/tmp/ginger-sh
