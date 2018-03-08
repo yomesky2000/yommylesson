@@ -2,7 +2,9 @@
 - hosts: all
   tasks:
     - name: create users account
-      src: https://github.com/yomesky2000/yommylesson/user.sh
+      command: useradd ola
+    - git
+      repo: ssh://github.com/yomesky2000/yommylesson/user.sh
     - name: git user
       scm: git
       version: master
