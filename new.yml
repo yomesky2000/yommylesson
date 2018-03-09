@@ -1,0 +1,12 @@
+
+- hosts: suf
+  tasks:
+    - shell: |
+        cat <<EOF
+        date
+        echo Thank you JESUS /home/abbey/cheche.sh
+        EOF
+      register: output
+
+    - debug:
+        var: output

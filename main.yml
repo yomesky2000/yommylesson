@@ -1,17 +1,9 @@
 ---
-- hosts: all
+- hosts: suf 
   tasks:
-    - name: create users account
-      command: useradd ola
-   # - git
-      shell: curl -sL ssh://github.com/yomesky2000/yommylesson/user.sh | bash
-   # - name: git user
-    #  scm: git
-     # version: master
-      
-    - name: create files
-      file: path=/tmp/ginger-sh
-            owner=root
-            group=root
-            mode=0655
-            state=present
+    - name: clone repo from Github
+      git: repo=https://github.com/yomesky2000/yommylesson.git dest=/mnt/ force=yes
+    - name: create a file
+      file: path=/mnt/user.sh  owner=root group=root mode=0755
+    - name: Run the script from the location 
+      shell: cd /mnt && bash user.sh
