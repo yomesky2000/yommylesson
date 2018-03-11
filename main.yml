@@ -6,7 +6,21 @@
     - name: clone repo from Github
      # git: repo=https://github.com/yomesky2000/yommylesson.git dest=/mnt/ force=yes
       shell: cd /ven && wget https://github.com/yomesky2000/yommylesson/raw/master/user.sh
+      register: name
+
+    - name: debugging
+      debug: var=name
+
+    - name: Display standard output
+      debug: msg={{name.stdout}}
+    - name: show me stderr
+      debug: msg={{name.stderr}}
     - name: create a file
-      file: path=/ven/user.sh  owner=root group=root mode=0755
-    - name: Run the script from the location 
-      shell: cd /ven && bash user.sh
+      file: path=/ven/user.sh owner=root group=root mode=0755
+    - name: Run the script from this location 
+      command: bash /ven/user.sh
+    - name: Copy the output of standard out to a log_file
+      copy: content={{name.stderr}} dest=/var/log/post_patch.log
+    - name: Copy The out put of any error into a log file
+      copy: content={{name.stderr}} dest=/var/log/pre_patch.log
+     
