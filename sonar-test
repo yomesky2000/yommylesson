@@ -1,1 +1,4 @@
-testing 1 2 3
+yum install epel-release -y
+cat /var/log/mssages > /sonar/log
+df -h > /sonar/filesystem
+clear
