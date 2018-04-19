@@ -1,0 +1,3 @@
+yum clean all
+cat /var/log/messages > /jenkins/log.txt
+clear
